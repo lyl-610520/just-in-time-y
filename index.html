@@ -113,29 +113,5 @@
   </div>
   
   <script type="module" src="/src/main.js"></script>
-  
-  <script>
-    // 内联调试脚本
-    console.log('HTML loaded, checking elements...')
-    
-    // 检查关键元素是否存在
-    setTimeout(() => {
-      const loadingScreen = document.getElementById('loadingScreen')
-      const skipButton = document.getElementById('skipButton')
-      
-      console.log('Loading screen:', loadingScreen)
-      console.log('Skip button:', skipButton)
-      
-      if (skipButton) {
-        console.log('Skip button found, adding inline event listener')
-        skipButton.addEventListener('click', () => {
-          console.log('Inline skip button clicked!')
-          if (loadingScreen) {
-            loadingScreen.style.display = 'none'
-          }
-        })
-      }
-    }, 100)
-  </script>
 </body>
 </html>
