@@ -64,6 +64,14 @@
       color: white;
       font-size: 1.2rem;
       opacity: 0.8;
+      margin-bottom: 1rem;
+    }
+    
+    .loading-debug {
+      color: rgba(255, 255, 255, 0.6);
+      font-size: 0.9rem;
+      text-align: center;
+      max-width: 300px;
     }
     
     .skip-button {
@@ -77,10 +85,16 @@
       border-radius: 20px;
       cursor: pointer;
       transition: all 0.3s ease;
+      font-size: 0.9rem;
     }
     
     .skip-button:hover {
       background: rgba(255, 255, 255, 0.3);
+      transform: scale(1.05);
+    }
+    
+    .skip-button:active {
+      transform: scale(0.95);
     }
   </style>
 </head>
@@ -91,9 +105,37 @@
       <button class="skip-button" id="skipButton">跳过</button>
       <div class="loading-logo">Just In Time</div>
       <div class="loading-text">恰逢其时</div>
+      <div class="loading-debug">
+        正在加载应用...<br>
+        3秒后自动启动，或点击右上角跳过按钮
+      </div>
     </div>
   </div>
   
   <script type="module" src="/src/main.js"></script>
+  
+  <script>
+    // 内联调试脚本
+    console.log('HTML loaded, checking elements...')
+    
+    // 检查关键元素是否存在
+    setTimeout(() => {
+      const loadingScreen = document.getElementById('loadingScreen')
+      const skipButton = document.getElementById('skipButton')
+      
+      console.log('Loading screen:', loadingScreen)
+      console.log('Skip button:', skipButton)
+      
+      if (skipButton) {
+        console.log('Skip button found, adding inline event listener')
+        skipButton.addEventListener('click', () => {
+          console.log('Inline skip button clicked!')
+          if (loadingScreen) {
+            loadingScreen.style.display = 'none'
+          }
+        })
+      }
+    }, 100)
+  </script>
 </body>
 </html>
